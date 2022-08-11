@@ -1,29 +1,28 @@
-import { View, Text, SafeAreaView, Image, Pressable } from 'react-native';
-import React, { useState } from 'react';
-import styles from './Styles';
-import { Button, IconButton, TextInput } from 'react-native-paper';
-import { Formik } from 'formik';
-import { LoginForm } from './LoginForm';
-import { useNavigation } from '@react-navigation/native';
+import { View, Text, SafeAreaView, Image, Pressable } from "react-native";
+import React, { useState } from "react";
+import styles from "./Styles";
+import { Button, IconButton, TextInput } from "react-native-paper";
+import { Formik } from "formik";
+import { LoginForm } from "./LoginForm";
+import { useNavigation } from "@react-navigation/native";
 
 const SignIn = () => {
   const navigation = useNavigation();
   const handleLogin = () => {
-    // navigation.navigate("Home");
-    console.log('Login');
+    navigation.navigate("Home");
   };
   const [hidePassword, setHidePassword] = useState(true);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.logo}>
         <Image
-          style={{ resizeMode: 'contain', height: 200, width: 200 }}
-          source={require('../../../assets/Logo.jpeg')}
+          style={{ resizeMode: "contain", height: 200, width: 200 }}
+          source={require("../../../assets/Logo.jpeg")}
         />
       </View>
       <Text style={styles.text}>Sign In to your account</Text>
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ email: "", password: "" }}
         onSubmit={handleLogin}
         validationSchema={LoginForm}
       >
@@ -39,35 +38,35 @@ const SignIn = () => {
           <>
             <View style={{ marginTop: 70 }}>
               <TextInput
-                mode='outlined'
-                label={'Email'}
-                onFocus={() => setFieldTouched('email')}
-                onBlur={handleBlur('email')}
+                mode="outlined"
+                label={"Email"}
+                onFocus={() => setFieldTouched("email")}
+                onBlur={handleBlur("email")}
                 value={values.email}
-                testID='email'
-                onChangeText={handleChange('email')}
+                testID="email"
+                onChangeText={handleChange("email")}
                 style={styles.input}
               ></TextInput>
               {touched.email && errors.email ? (
                 <Text style={styles.error}>{errors.email}</Text>
               ) : null}
               <TextInput
-                mode='outlined'
-                label={'Password'}
-                onFocus={() => setFieldTouched('password')}
-                onBlur={handleBlur('password')}
+                mode="outlined"
+                label={"Password"}
+                onFocus={() => setFieldTouched("password")}
+                onBlur={handleBlur("password")}
                 value={values.password}
                 secureTextEntry={hidePassword}
                 right={
                   <TextInput.Icon
-                    name='eye'
+                    name="eye"
                     style={{ marginRight: 10, marginTop: 10 }}
                     onPress={() => {
                       setHidePassword(!hidePassword);
                     }}
                   />
                 }
-                onChangeText={handleChange('password')}
+                onChangeText={handleChange("password")}
                 style={styles.input}
               ></TextInput>
               {touched.password && errors.password ? (
@@ -75,32 +74,32 @@ const SignIn = () => {
               ) : null}
             </View>
             <Button
-              mode='contained'
+              mode="contained"
               onPress={handleSubmit}
               style={styles.button}
             >
-              <Text style={{ color: 'white' }}>Sign In</Text>
+              <Text style={{ color: "white" }}>Sign In</Text>
             </Button>
           </>
         )}
       </Formik>
       <Button
-        mode='text'
+        mode="text"
         onPress={() => {
-          navigation.navigate('ForgotPassword');
-          console.log('Forgot Password');
+          navigation.navigate("ForgotPassword");
+          console.log("Forgot Password");
         }}
       >
-        <Text style={{ color: '#6c6c6c' }}>Forgot the password?</Text>
+        <Text style={{ color: "#6c6c6c" }}>Forgot the password?</Text>
       </Button>
-      <View style={{ flexDirection: 'row', marginTop: 40 }}>
+      <View style={{ flexDirection: "row", marginTop: 40 }}>
         <Text>Dont have and account?</Text>
         <Pressable
           onPress={() => {
-            navigation.navigate('SignUp');
+            navigation.navigate("SignUp");
           }}
         >
-          <Text style={{ color: '#6c6c6c' }}> Sign Up</Text>
+          <Text style={{ color: "#6c6c6c" }}> Sign Up</Text>
         </Pressable>
       </View>
     </SafeAreaView>
