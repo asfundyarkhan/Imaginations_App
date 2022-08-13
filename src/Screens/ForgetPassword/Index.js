@@ -30,7 +30,7 @@ const ForgotPassword = () => {
           selectedColor='#6c6c6c'
           style={styles.chip}
           onPress={() => {
-            console.log('pressed');
+            navigation.navigate('ResetPassword');
           }}
         >
           <View style={{ flexDirection: 'column' }}>
@@ -44,7 +44,7 @@ const ForgotPassword = () => {
           selected={false}
           selectedColor='#6c6c6c'
           style={styles.chip}
-          onPress={() => console.log('Pressed')}
+          onPress={() => navigation.navigate('ResetPassword')}
         >
           <View style={{ flexDirection: 'column' }}>
             <Text style={{ fontSize: 14, color: '#757575' }}>Via Email:</Text>
