@@ -17,6 +17,7 @@ import { theme } from "../../../App.styles";
 import { useNavigation } from "@react-navigation/native";
 import SubCatergoriesModal from "../../Modals/Categories";
 import Kids from "../../dummyData/kids";
+import SizeChartModal from "../../Modals/SizeChart";
 
 const Home = () => {
   const navigation = useNavigation();
@@ -24,6 +25,7 @@ const Home = () => {
   const [isVisible, setVisibilty] = useState(false);
   const [modalContent, setModalContent] = useState();
   const [title, setTitle] = useState("");
+  const [iSSizeChartVisbile, setSizeChartVisibility] = useState(false);
 
   const handleModalPressable = () => {
     setVisibilty(false);
@@ -183,7 +185,10 @@ const Home = () => {
                     marginVertical: 25,
                     marginHorizontal: 15,
                   }}
-                  onPress={() => console.log("helpp")}
+                  onPress={() => {
+                    setModalContent(val.item);
+                    setSizeChartVisibility(true);
+                  }}
                 >
                   <Avatar.Image size={60} source={val.item.img} />
                   <Text style={{ margin: 5, fontSize: 18 }}>
@@ -201,6 +206,13 @@ const Home = () => {
         title={title}
         content={modalContent}
         onActionPress={handleModalPressable}
+      />
+      <SizeChartModal
+        isVisible={iSSizeChartVisbile}
+        onClose={() => setSizeChartVisibility(false)}
+        title={"SizeChart"}
+        content={modalContent}
+        onActionPress={() => setSizeChartVisibility(false)}
       />
     </SafeAreaView>
   );

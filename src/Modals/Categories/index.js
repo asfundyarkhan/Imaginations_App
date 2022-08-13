@@ -31,21 +31,9 @@ const SubCatergoriesModal = ({
               renderItem={(val) => {
                 return (
                   <Pressable onPress={onActionPress}>
-                    <Surface
-                      style={{
-                        backgroundColor: theme.colors.accent,
-                        paddingVertical: 20,
-                        paddingHorizontal: 20,
-                        alignItems: "center",
-                        margin: 5,
-                        borderRadius: 20,
-                        flexDirection: "row",
-                      }}
-                    >
+                    <Surface style={styles.surfaceStyle}>
                       <Avatar.Image size={80} source={val.item.img} />
-                      <Text style={{ margin: 10, fontSize: 20 }}>
-                        {val.item.name}
-                      </Text>
+                      <Text style={styles.textStyle}>{val.item.name}</Text>
                     </Surface>
                   </Pressable>
                 );
