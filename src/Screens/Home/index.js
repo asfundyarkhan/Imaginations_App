@@ -6,7 +6,7 @@ import {
   Pressable,
   ScrollView,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Avatar, Appbar, Surface } from "react-native-paper";
 import { View } from "react-native";
 import styles from "./styles";
@@ -14,7 +14,34 @@ import categories from "../../dummyData/categories";
 import sizeCharts from "../../dummyData/sizeCharts";
 import featured from "../../dummyData/featured";
 import { theme } from "../../../App.styles";
+import { useNavigation } from "@react-navigation/native";
+import SubCatergoriesModal from "../../Modals/Categories";
+import Kids from "../../dummyData/kids";
+
 const Home = () => {
+  const navigation = useNavigation();
+
+  const [isVisible, setVisibilty] = useState(false);
+  const [modalContent, setModalContent] = useState();
+  const [title, setTitle] = useState("");
+
+  const handleModalPressable = () => {
+    setVisibilty(false);
+  };
+
+  const handleOnPressCategories = (props) => {
+    switch (props.name) {
+      case "Kids":
+        setModalContent(Kids);
+        setTitle(props.name);
+        setVisibilty(true);
+        break;
+
+      default:
+        break;
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -55,7 +82,6 @@ const Home = () => {
           />
           <Text
             style={{
-              position: "absolute",
               fontSize: 40,
               marginTop: "13%",
               marginHorizontal: "5%",
@@ -65,9 +91,8 @@ const Home = () => {
           </Text>
           <Text
             style={{
-              position: "absolute",
               fontSize: 30,
-              marginTop: "24%",
+
               marginLeft: "75%",
             }}
           >
@@ -85,19 +110,21 @@ const Home = () => {
             ListHeaderComponent={() => <View />}
             renderItem={(val) => {
               return (
-                <Pressable onPress={() => console.log("helpp")}>
+                <Pressable onPress={() => handleOnPressCategories(val.item)}>
                   <Surface
                     style={{
                       backgroundColor: theme.colors.accent,
-                      padding: 30,
+                      padding: 20,
                       alignItems: "center",
                       justifyContent: "center",
                       margin: 5,
                       borderRadius: 20,
                     }}
                   >
-                    <Avatar.Image size={50} source={val.item.img} />
-                    <Text style={{ margin: 5 }}>{val.item.name}</Text>
+                    <Avatar.Image size={90} source={val.item.img} />
+                    <Text style={{ margin: 5, fontSize: 20 }}>
+                      {val.item.name}
+                    </Text>
                   </Surface>
                 </Pressable>
               );
@@ -126,7 +153,7 @@ const Home = () => {
                       borderRadius: 20,
                     }}
                   >
-                    <Avatar.Image size={80} source={val.item.img} />
+                    <Avatar.Image size={70} source={val.item.img} />
                     <Text
                       style={{ marginTop: 5, marginBottom: 3, fontSize: 12 }}
                     >
@@ -153,19 +180,28 @@ const Home = () => {
                 <Pressable
                   style={{
                     alignItems: "center",
-                    marginVertical: 40,
-                    marginHorizontal: 20,
+                    marginVertical: 25,
+                    marginHorizontal: 15,
                   }}
                   onPress={() => console.log("helpp")}
                 >
-                  <Avatar.Image size={50} source={val.item.img} />
-                  <Text style={{ margin: 5 }}>{val.item.name}</Text>
+                  <Avatar.Image size={60} source={val.item.img} />
+                  <Text style={{ margin: 5, fontSize: 18 }}>
+                    {val.item.name}
+                  </Text>
                 </Pressable>
               );
             }}
           />
         </View>
       </ScrollView>
+      <SubCatergoriesModal
+        isVisible={isVisible}
+        onClose={() => setVisibilty(false)}
+        title={title}
+        content={modalContent}
+        onActionPress={handleModalPressable}
+      />
     </SafeAreaView>
   );
 };
