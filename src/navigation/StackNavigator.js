@@ -3,7 +3,7 @@ import React from "react";
 
 import categories from "../dummyData/categories";
 import ResetPassword from "../ResetPassword/Index";
-import Categories from "../Screens/Categories";
+import Checkout from "../Screens/Checkout";
 import ForgotPassword from "../Screens/ForgetPassword/Index";
 import Home from "../Screens/Home";
 import OnBoarding from "../Screens/OnBoarding/Index";
@@ -21,11 +21,7 @@ const StackNavigation = () => {
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="ResetPassword" component={ResetPassword} />
       <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen
-        name="Category"
-        component={Categories}
-        options={{ presentation: "modal" }}
-      />
+      <Stack.Screen name="Checkout" component={Checkout} />
     </Stack.Navigator>
   );
 };

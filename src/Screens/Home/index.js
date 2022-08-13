@@ -46,16 +46,16 @@ const Home = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Appbar.Header style={{ backgroundColor: theme.colors.accent }}>
+        <Appbar.BackAction
+          color="white"
+          onPress={() => {
+            navigation.goBack();
+          }}
+        />
+        <Appbar.Content color="white" title="Home" />
+      </Appbar.Header>
       <ScrollView>
-        <Appbar.Header style={{ backgroundColor: theme.colors.accent }}>
-          <Appbar.BackAction
-            color="white"
-            onPress={() => {
-              navigation.goBack();
-            }}
-          />
-          <Appbar.Content color="white" title="Home" />
-        </Appbar.Header>
         <View
           style={{ flexDirection: "row", alignItems: "center", marginTop: 20 }}
         >
@@ -75,7 +75,8 @@ const Home = () => {
           <Image
             style={{
               //  flex: 1,
-              width: "100%",
+              margin: 2,
+              width: "99%",
               height: "100%",
               borderRadius: 40,
               position: "absolute",
@@ -144,7 +145,9 @@ const Home = () => {
             ListHeaderComponent={() => <View />}
             renderItem={(val) => {
               return (
-                <Pressable onPress={() => console.log("helpp")}>
+                <Pressable
+                  onPress={() => navigation.navigate("Checkout", val.item)}
+                >
                   <Surface
                     style={{
                       backgroundColor: theme.colors.accent,
