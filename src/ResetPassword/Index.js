@@ -4,8 +4,10 @@ import { Formik } from 'formik';
 import { TextInput, Button, Appbar } from 'react-native-paper';
 import styles from './Styles';
 import { ResetPasswordForm } from './ResetPasswordForm';
+import { useNavigation } from '@react-navigation/native';
 
 const ResetPassword = () => {
+  const navigation = useNavigation();
   const handleSave = () => {
     // navigation.navigate("Congradulation");
     console.log('pressed');
@@ -14,7 +16,7 @@ const ResetPassword = () => {
   return (
     <View style={{ flex: 1 }}>
       <Appbar.Header>
-        <Appbar.BackAction color='white' onPress={() => {}} />
+        <Appbar.BackAction color='white' onPress={() => navigation.goBack()} />
         <Appbar.Content color='white' title='Reset Password' />
       </Appbar.Header>
       <View style={styles.container}>
