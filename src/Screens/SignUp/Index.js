@@ -4,12 +4,12 @@ import styles from "./Styles";
 import { Button, TextInput } from "react-native-paper";
 import { Formik } from "formik";
 import { SignupForm } from "./SignupForm";
+import { useNavigation } from "@react-navigation/native";
 
 const SignUp = () => {
   const navigation = useNavigation();
   const handleSignUp = () => {
     navigation.navigate("SignIn");
-    console.log("SignUp");
   };
   const [hidePassword, setHidePassword] = useState(true);
   return (
@@ -103,7 +103,6 @@ const SignUp = () => {
         <Pressable
           onPress={() => {
             navigation.navigate("SignIn");
-            console.log("SignIn");
           }}
         >
           <Text style={{ color: "#6c6c6c" }}> Sign In</Text>
