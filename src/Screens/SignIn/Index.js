@@ -87,7 +87,6 @@ const SignIn = () => {
         mode="text"
         onPress={() => {
           navigation.navigate("ForgotPassword");
-          console.log("Forgot Password");
         }}
       >
         <Text style={{ color: "#6c6c6c" }}>Forgot the password?</Text>
