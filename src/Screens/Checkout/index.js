@@ -5,17 +5,20 @@ import {
   Text,
   SafeAreaView,
   Image,
-  Pressable,
   TextInput,
   KeyboardAvoidingView,
 } from "react-native";
 import { Appbar, Button } from "react-native-paper";
+import { useDispatch, useSelector } from "react-redux";
 import { theme } from "../../../App.styles";
 import Sizes from "../../components/Sizes";
+import { addToCart } from "../../store/features/cartSlice";
 
 const ItemFinalizing = () => {
   const { params } = useRoute();
   const { name, img, price, description, id } = params;
+  const dispatch = useDispatch();
+  const { items } = useSelector((state) => state.Cart);
 
   const [quantity, setQuantity] = useState(1);
 
@@ -84,7 +87,6 @@ const ItemFinalizing = () => {
                 flex: 1,
                 padding: 10,
                 backgroundColor: theme.colors.accent,
-                // backgroundColor: "#6c6c6c",
                 borderRadius: theme.roundness,
               }}
             />
@@ -117,9 +119,12 @@ const ItemFinalizing = () => {
           <Button
             mode="text"
             onPress={() => {
-              // navigation.navigate("ForgotPassword");
+              dispatch(addToCart({ name, img, price, quantity, id }));
             }}
           >
+            <Text style={{ color: "#6c6c6c" }}>Add to Cart</Text>
+          </Button>
+          <Button mode="text" onPress={() => console.log(items)}>
             <Text style={{ color: "#6c6c6c" }}>Add to Cart</Text>
           </Button>
         </View>
