@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     position: "absolute",
-    width: "95%",
+    width: "98%",
     bottom: 0,
     height: 500,
     alignSelf: "center",
@@ -39,9 +39,9 @@ const styles = StyleSheet.create({
   surfaceStyle: {
     backgroundColor: theme.colors.accent,
     paddingVertical: 20,
-    paddingHorizontal: 20,
+    paddingHorizontal: 5,
     alignItems: "center",
-    margin: 5,
+    marginVertical: 5,
     borderRadius: 20,
     flexDirection: "row",
   },

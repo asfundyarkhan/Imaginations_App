@@ -54,6 +54,13 @@ const Home = () => {
           }}
         />
         <Appbar.Content color="white" title="Home" />
+        <Appbar.Action
+          icon="cart"
+          color="white"
+          onPress={() => {
+            navigation.navigate("CartScreen");
+          }}
+        />
       </Appbar.Header>
       <ScrollView>
         <View
