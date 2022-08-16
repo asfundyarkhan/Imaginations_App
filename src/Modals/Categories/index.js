@@ -2,7 +2,6 @@ import { View, Text, Modal, FlatList, Pressable } from "react-native";
 import React from "react";
 import styles from "./styles";
 import { Avatar, Surface } from "react-native-paper";
-import { theme } from "../../../App.styles";
 
 const SubCatergoriesModal = ({
   isVisible,

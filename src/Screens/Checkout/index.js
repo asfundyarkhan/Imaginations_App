@@ -1,4 +1,4 @@
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
   View,
@@ -8,7 +8,7 @@ import {
   TextInput,
   KeyboardAvoidingView,
 } from "react-native";
-import { Appbar, Button } from "react-native-paper";
+import { Button, Snackbar } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 import { theme } from "../../../App.styles";
 import Sizes from "../../components/Sizes";
@@ -20,6 +20,9 @@ const ItemFinalizing = () => {
   const dispatch = useDispatch();
   const { items } = useSelector((state) => state.Cart);
 
+  const navigation = useNavigation();
+
+  const [isVisible, setVisible] = useState(true);
   const [quantity, setQuantity] = useState(1);
 
   return (
@@ -27,10 +30,10 @@ const ItemFinalizing = () => {
       <KeyboardAvoidingView>
         <Image
           source={img}
-          resizeMode="centre"
-          style={{ width: "100%", height: "45%" }}
+          resizeMode="cover"
+          style={{ width: "100%", height: "40%" }}
         />
-        <View style={{ margin: 20 }}>
+        <View style={{ margin: 15 }}>
           <Text style={{ fontSize: 30, fontWeight: "800", marginBottom: 10 }}>
             {name}
           </Text>
@@ -79,15 +82,18 @@ const ItemFinalizing = () => {
               Quantity :
             </Text>
             <TextInput
+              placeholder="1"
               value={quantity}
               keyboardType="numeric"
               onChangeText={(val) => setQuantity(val)}
               style={{
-                margin: 5,
-                flex: 1,
+                marginLeft: 50,
+                flex: 0.5,
                 padding: 10,
-                backgroundColor: theme.colors.accent,
+                // backgroundColor: theme.colors.accent,
                 borderRadius: theme.roundness,
+                backgroundColor: "rgba(108, 108, 108, 0.2)",
+                paddingHorizontal: 20,
               }}
             />
           </View>
@@ -119,13 +125,31 @@ const ItemFinalizing = () => {
           <Button
             mode="text"
             onPress={() => {
+              console.log("is visiblexs");
+              setVisible(true);
               dispatch(addToCart({ name, img, price, quantity, id }));
             }}
           >
             <Text style={{ color: "#6c6c6c" }}>Add to Cart</Text>
           </Button>
-          <Button mode="text" onPress={() => console.log(items)}>
-            <Text style={{ color: "#6c6c6c" }}>Add to Cart</Text>
+          {/* <Snackbar
+            visible={isVisible}
+            onDismiss={() => setVisible(false)}
+            duration={7000}
+            style={{ position: "absolute", justifyContent: "flex-end" }}
+          >
+            Your item Added to the cart
+          </Snackbar> */}
+
+          <Button
+            mode="text"
+            onPress={() => {
+              navigation.navigate("CartScreen");
+              console.log(items);
+              setVisible(true);
+            }}
+          >
+            <Text style={{ color: "#6c6c6c" }}>View Cart</Text>
           </Button>
         </View>
       </KeyboardAvoidingView>

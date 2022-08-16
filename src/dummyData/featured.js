@@ -44,10 +44,12 @@ const featured = [
     color: "White",
     price: 1399,
     img: require("../../assets/IMAGINATIONS(products)/features/SHIRT02.jpeg"),
-    description: `Premium Quality with Real Picture,
-       7- Days Easy Replacement.
-      Cash on Delivery 
-      Free home delivery in all over the Pakistan`,
+    description: [
+      "Premium Quality with Real Picture",
+      " 7- Days Easy Replacement.",
+      "Cash on Delivery ",
+      "Free home delivery in all over the Pakistan",
+    ],
   },
   {
     id: 5,
