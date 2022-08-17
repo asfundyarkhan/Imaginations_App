@@ -2,10 +2,10 @@ import { SafeAreaView } from "react-native";
 import React from "react";
 import { Provider as PaperProvider } from "react-native-paper";
 import { theme } from "./App.styles";
-import StackNavigation from "./src/navigation/StackNavigator";
 import { NavigationContainer } from "@react-navigation/native";
 import { store } from "./src/store";
 import { Provider } from "react-redux";
+import StackNavigation from "./src/Navigation/StackNavigator";
 
 const App = () => {
   return (
