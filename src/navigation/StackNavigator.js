@@ -16,7 +16,10 @@ const Stack = createNativeStackNavigator();
 
 const StackNavigation = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="OnBoarding"
+    >
       <Stack.Screen name="PaymentMethod" component={PaymentMethod} />
       <Stack.Screen name="CardPayment" component={CardPayment} />
       <Stack.Screen name="OnBoarding" component={OnBoarding} />

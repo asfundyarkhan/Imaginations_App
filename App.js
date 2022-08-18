@@ -5,7 +5,7 @@ import { theme } from "./App.styles";
 import { NavigationContainer } from "@react-navigation/native";
 import { store } from "./src/store";
 import { Provider } from "react-redux";
-import StackNavigation from "./src/Navigation/StackNavigator";
+import StackNavigation from "./src/navigation/StackNavigator";
 
 const App = () => {
   return (

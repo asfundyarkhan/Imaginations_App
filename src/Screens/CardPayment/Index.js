@@ -53,7 +53,7 @@ const CardPayment = () => {
             navigation.goBack();
           }}
         />
-        <Appbar.Content color="white" title="Home" />
+        <Appbar.Content color="white" title="Card Details" />
       </Appbar.Header>
       <Image
         style={styles.image}
@@ -63,6 +63,7 @@ const CardPayment = () => {
       <TextInput
         value={card.value}
         maxLength={16}
+        keyboardType="numbers-and-punctuation"
         placeholder="0000 0000 0000 0000"
         onChangeText={(value) => {
           setCard({ ...card, value, validated: card.validate(value) });

@@ -8,9 +8,10 @@ import styles from "./styles";
 
 const CartScreen = () => {
   const navigation = useNavigation();
-  const { items } = useSelector((state) => state.Cart);
+  const { items, totalPrice } = useSelector((state) => state.Cart);
 
   const [isVisible, setVisible] = useState(false);
+  // const [total, setTotal] = useState(0);
   return (
     <View style={{ flex: 1 }}>
       <Appbar.Header style={{ backgroundColor: theme.colors.accent }}>
@@ -24,7 +25,7 @@ const CartScreen = () => {
       </Appbar.Header>
 
       {items.length ? (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, margin: 5 }}>
           <Text style={styles.heading}>Your Currently Selected items </Text>
           <FlatList
             data={items}
@@ -34,6 +35,7 @@ const CartScreen = () => {
                 <Pressable onLongPress={() => setVisible(true)}>
                   <Surface style={styles.surfaceStyle}>
                     <View style={styles.insideSurfaceview}>
+                      {console.log("sdsdsdsdsd", totalPrice)}
                       <View
                         style={{ flexDirection: "row", alignItems: "center" }}
                       >
@@ -53,9 +55,14 @@ const CartScreen = () => {
               );
             }}
           />
-          {/* <Surface style={styles.btnStyle}>
-            <Button labelStyle={{ color: "white" }}>Price</Button>
-          </Surface> */}
+
+          <Pressable
+            style={styles.btnStyle}
+            onPress={() => navigation.navigate("PaymentMethod")}
+          >
+            <Text style={{ color: "white", fontSize: 10 }}>Total Price : </Text>
+            <Text style={{ color: "white", fontSize: 20 }}>{totalPrice}</Text>
+          </Pressable>
         </View>
       ) : (
         <View
@@ -66,7 +73,7 @@ const CartScreen = () => {
           }}
         >
           <Text style={{ fontSize: 30, color: theme.colors.accent }}>
-            Your Cart Is Empty
+            Your cart is Currently empty
           </Text>
         </View>
       )}
