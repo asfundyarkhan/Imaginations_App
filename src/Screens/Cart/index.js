@@ -53,9 +53,9 @@ const CartScreen = () => {
               );
             }}
           />
-          <Surface style={styles.btnStyle}>
+          {/* <Surface style={styles.btnStyle}>
             <Button labelStyle={{ color: "white" }}>Price</Button>
-          </Surface>
+          </Surface> */}
         </View>
       ) : (
         <View
