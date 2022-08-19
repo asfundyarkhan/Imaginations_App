@@ -23,22 +23,22 @@ const PaymentMethod = () => {
             navigation.goBack();
           }}
         />
-        <Appbar.Content color="white" title="Home" />
+        <Appbar.Content color="white" title="Payment Mehtods" />
       </Appbar.Header>
       <View style={styles.colorStyle}>
         <Text style={styles.text}>Select Payment Method</Text>
       </View>
       <Text style={styles.text}>Cash on delivery</Text>
-      <Pressable
-        style={styles.Button}
-        onPress={() => {
-          navigate("PaymentInfo");
-        }}
-      >
+      <Pressable style={styles.Button}>
         <IconButton size={70} icon="cash-marker" style={styles.image} />
       </Pressable>
       <Text style={styles.text}>Credit Card</Text>
-      <Pressable style={styles.Button2}>
+      <Pressable
+        style={styles.Button2}
+        onPress={() => {
+          navigation.navigate("CardPayment");
+        }}
+      >
         <IconButton size={70} icon="credit-card-outline" style={styles.image} />
       </Pressable>
     </View>

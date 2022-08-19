@@ -22,7 +22,7 @@ const ItemFinalizing = () => {
 
   const navigation = useNavigation();
 
-  const [isVisible, setVisible] = useState(true);
+  const [isVisible, setVisible] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
   return (
@@ -125,28 +125,25 @@ const ItemFinalizing = () => {
           <Button
             mode="text"
             onPress={() => {
-              console.log("is visiblexs");
               setVisible(true);
               dispatch(addToCart({ name, img, price, quantity, id }));
             }}
           >
             <Text style={{ color: "#6c6c6c" }}>Add to Cart</Text>
           </Button>
-          {/* <Snackbar
+          <Snackbar
             visible={isVisible}
             onDismiss={() => setVisible(false)}
-            duration={7000}
+            duration={700}
             style={{ position: "absolute", justifyContent: "flex-end" }}
           >
-            Your item Added to the cart
-          </Snackbar> */}
+            Your item is Added to the cart
+          </Snackbar>
 
           <Button
             mode="text"
             onPress={() => {
               navigation.navigate("CartScreen");
-              console.log(items);
-              setVisible(true);
             }}
           >
             <Text style={{ color: "#6c6c6c" }}>View Cart</Text>

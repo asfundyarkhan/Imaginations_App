@@ -1,6 +1,6 @@
 const featured = [
   {
-    id: 1,
+    id: "f1",
     name: "Burger",
     color: "",
     price: 1199,
@@ -13,7 +13,7 @@ const featured = [
     ],
   },
   {
-    id: 2,
+    id: "f2",
     name: "Drift Pant",
     color: "Navy Blue",
     price: 1750,
@@ -26,7 +26,7 @@ const featured = [
     ],
   },
   {
-    id: 3,
+    id: "f3",
     name: "Polo ",
     color: "",
     price: 1999,
@@ -39,7 +39,7 @@ const featured = [
     ],
   },
   {
-    id: 4,
+    id: "f4",
     name: "Summer Shirt",
     color: "White",
     price: 1399,
@@ -52,7 +52,7 @@ const featured = [
     ],
   },
   {
-    id: 5,
+    id: "f5",
     name: " Leather jacket",
     color: "Black",
     price: 4499,
@@ -65,7 +65,7 @@ const featured = [
     ],
   },
   {
-    id: 6,
+    id: "f6",
     name: "Hoodie",
     color: "Mustard",
     price: 1499,

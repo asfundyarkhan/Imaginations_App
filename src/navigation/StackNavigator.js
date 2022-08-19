@@ -11,12 +11,16 @@ import OnBoarding from "../Screens/OnBoarding/Index";
 import PaymentMethod from "../Screens/PaymentMethod/Index";
 import SignIn from "../Screens/SignIn/Index";
 import SignUp from "../Screens/SignUp/Index";
+import ProductSelection from "../Screens/ProductSelection/index";
 
 const Stack = createNativeStackNavigator();
 
 const StackNavigation = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="OnBoarding"
+    >
       <Stack.Screen name="PaymentMethod" component={PaymentMethod} />
       <Stack.Screen name="CardPayment" component={CardPayment} />
       <Stack.Screen name="OnBoarding" component={OnBoarding} />
@@ -27,6 +31,7 @@ const StackNavigation = () => {
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Checkout" component={Checkout} />
       <Stack.Screen name="CartScreen" component={CartScreen} />
+      <Stack.Screen name="ProductSelection" component={ProductSelection} />
     </Stack.Navigator>
   );
 };
