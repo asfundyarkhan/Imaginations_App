@@ -24,7 +24,7 @@ const SubCatergoriesModal = ({
             <Text style={styles.heading}>{title}</Text>
             <FlatList
               data={content}
-              keyExtractor={(item) => item.id}
+              keyExtractor={(item, index) => index}
               ListHeaderComponentStyle={{ marginStart: 10 }}
               ListHeaderComponent={() => <View />}
               renderItem={(val) => {

@@ -23,25 +23,35 @@ const Home = () => {
   const navigation = useNavigation();
 
   const [isVisible, setVisibilty] = useState(false);
-  const [modalContent, setModalContent] = useState();
+  const [modalContent, setModalContent] = useState("");
   const [title, setTitle] = useState("");
   const [iSSizeChartVisbile, setSizeChartVisibility] = useState(false);
 
   const handleModalPressable = () => {
     setVisibilty(false);
+    navigation.navigate("ProductSelection", modalContent);
   };
 
   const handleOnPressCategories = (props) => {
     switch (props.name) {
       case "Kids":
-        setModalContent(Kids);
         setTitle(props.name);
-        setVisibilty(true);
         break;
-
+      case "New born":
+        setTitle("New Born");
+        break;
+      case "Summer":
+        setTitle("Summer");
+        break;
+      case "Winter":
+        setTitle("Winter");
+        break;
       default:
         break;
     }
+    setModalContent(Kids);
+
+    setVisibilty(true);
   };
 
   return (
@@ -102,7 +112,6 @@ const Home = () => {
           <Text
             style={{
               fontSize: 30,
-
               marginLeft: "75%",
             }}
           >
