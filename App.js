@@ -1,20 +1,22 @@
-import { SafeAreaView } from 'react-native';
-import React from 'react';
-import { Provider as PaperProvider } from 'react-native-paper';
-import { theme } from './App.styles';
-import StackNavigation from './src/navigation/StackNavigator';
-import { NavigationContainer } from '@react-navigation/native';
-import ResetPassword from './src/ResetPassword/Index';
+import { SafeAreaView } from "react-native";
+import React from "react";
+import { Provider as PaperProvider } from "react-native-paper";
+import { theme } from "./App.styles";
+import { NavigationContainer } from "@react-navigation/native";
+import { store } from "./src/store";
+import { Provider } from "react-redux";
+import StackNavigation from "./src/navigation/StackNavigator";
 
 const App = () => {
   return (
     <NavigationContainer>
-      <PaperProvider theme={theme}>
-        <SafeAreaView style={{ flex: 1 }}>
-          <StackNavigation />
-          {/* <ResetPassword /> */}
-        </SafeAreaView>
-      </PaperProvider>
+      <Provider store={store}>
+        <PaperProvider theme={theme}>
+          <SafeAreaView style={{ flex: 1 }}>
+            <StackNavigation />
+          </SafeAreaView>
+        </PaperProvider>
+      </Provider>
     </NavigationContainer>
   );
 };
