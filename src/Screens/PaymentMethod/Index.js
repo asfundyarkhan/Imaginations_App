@@ -23,7 +23,11 @@ const PaymentMethod = () => {
             navigation.goBack();
           }}
         />
-        <Appbar.Content color="white" title="Payment Mehtods" />
+        <Appbar.Content
+          color="white"
+          title="Payment Mehtods"
+          titleStyle={{ alignSelf: "center" }}
+        />
       </Appbar.Header>
       <View style={styles.colorStyle}>
         <Text style={styles.text}>Select Payment Method</Text>

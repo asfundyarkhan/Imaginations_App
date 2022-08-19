@@ -10,9 +10,10 @@ import {
 } from "react-native";
 import { Button, Snackbar } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
-import { theme } from "../../../App.styles";
+
 import Sizes from "../../components/Sizes";
 import { addToCart } from "../../store/features/cartSlice";
+import styles from "./styles";
 
 const ItemFinalizing = () => {
   const { params } = useRoute();
@@ -26,101 +27,40 @@ const ItemFinalizing = () => {
   const [quantity, setQuantity] = useState(1);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={styles.mainContainer}>
       <KeyboardAvoidingView>
         <Image
           source={img}
           resizeMode="cover"
           style={{ width: "100%", height: "40%" }}
         />
-        <View style={{ margin: 15 }}>
-          <Text style={{ fontSize: 30, fontWeight: "800", marginBottom: 10 }}>
-            {name}
-          </Text>
-          <Text style={{ fontSize: 25, fontWeight: "600", marginBottom: 10 }}>
-            Description
-          </Text>
+        <View style={styles.body}>
+          <Text style={styles.titleStyle}>{name}</Text>
+          <Text style={styles.descriptionHeader}>Description</Text>
           {description.map((val) => (
-            <Text style={{ fontSize: 15, marginBottom: 5 }}>{val}</Text>
+            <Text style={styles.descriptionStyle}>{val}</Text>
           ))}
-          <Text
-            style={{
-              fontSize: 25,
-              fontWeight: "600",
-              marginBottom: 10,
-              marginTop: 5,
-            }}
-          >
-            Size
-          </Text>
-          <View
-            style={{
-              flexDirection: "row",
-            }}
-          >
+          <Text style={styles.titleSize}>Size</Text>
+          <View style={styles.sizesView}>
             <Sizes text={"S"} />
             <Sizes text={"M"} />
             <Sizes text={"L"} />
             <Sizes text={"XL"} />
-            <Text
-              style={{
-                alignSelf: "center",
-                justifyContent: "flex-end",
-              }}
-            >
-              In-Stock
-            </Text>
+            <Text style={styles.inStockText}>In-Stock</Text>
           </View>
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <Text
-              style={{
-                fontSize: 25,
-                fontWeight: "600",
-                marginTop: 5,
-              }}
-            >
-              Quantity :
-            </Text>
+          <View style={styles.quantityView}>
+            <Text style={styles.quantityText}>Quantity :</Text>
             <TextInput
               placeholder="1"
               value={quantity}
               keyboardType="numeric"
               onChangeText={(val) => setQuantity(val)}
-              style={{
-                marginLeft: 50,
-                flex: 0.5,
-                padding: 10,
-                // backgroundColor: theme.colors.accent,
-                borderRadius: theme.roundness,
-                backgroundColor: "rgba(108, 108, 108, 0.2)",
-                paddingHorizontal: 20,
-              }}
+              style={styles.quantityInput}
             />
           </View>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              marginTop: 10,
-              justifyContent: "space-between",
-            }}
-          >
-            <Text
-              style={{
-                fontSize: 25,
-                fontWeight: "600",
-              }}
-            >
-              Price :
-            </Text>
-            <Text
-              style={{
-                fontSize: 30,
-                fontWeight: "600",
-              }}
-            >
-              {price}rs
-            </Text>
+          <View style={styles.priceView}>
+            <Text style={styles.priceText}>Price :</Text>
+            <Text style={styles.priceValue}>{price}rs</Text>
           </View>
           <Button
             mode="text"
@@ -129,13 +69,13 @@ const ItemFinalizing = () => {
               dispatch(addToCart({ name, img, price, quantity, id }));
             }}
           >
-            <Text style={{ color: "#6c6c6c" }}>Add to Cart</Text>
+            <Text style={styles.btnText}>Add to Cart</Text>
           </Button>
           <Snackbar
             visible={isVisible}
             onDismiss={() => setVisible(false)}
             duration={700}
-            style={{ position: "absolute", justifyContent: "flex-end" }}
+            style={styles.snackBarStyle}
           >
             Your item is Added to the cart
           </Snackbar>
@@ -146,7 +86,7 @@ const ItemFinalizing = () => {
               navigation.navigate("CartScreen");
             }}
           >
-            <Text style={{ color: "#6c6c6c" }}>View Cart</Text>
+            <Text style={styles.btnText}>View Cart</Text>
           </Button>
         </View>
       </KeyboardAvoidingView>
