@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { theme } from "../../../App.styles";
 
 const styles = StyleSheet.create({
   container: {
@@ -13,40 +14,64 @@ const styles = StyleSheet.create({
     width: 200,
     resizeMode: "contain",
   },
-  textHeading: { fontSize: 20, fontWeight: "800", paddingHorizontal: 20 },
-  text: {
-    marginTop: 150,
+  textHeading: {
     fontSize: 20,
-    margin: 10,
-    color: "black",
+    fontWeight: "800",
+    paddingHorizontal: 20,
   },
-  button: {
-    width: "90%",
-    borderRadius: 25,
-    marginTop: 50,
-    height: 50,
-    padding: 5,
-    borderWidth: 1,
-    borderColor: "#6c6c6c",
-  },
-  textInput: {
+  avatarView: {
+    flexDirection: "row",
+    alignItems: "center",
     marginTop: 20,
-    marginLeft: 20,
   },
-  input: {
-    marginTop: 10,
-    fontSize: 14,
-    width: 350,
-    height: 50,
-    backgroundColor: "#F5F5F5",
+  saleImageView: {
+    marginTop: 20,
+    height: 180,
   },
-  error: {
-    color: "red",
-    padding: 5,
+  saleImage: {
+    margin: 2,
+    width: "99%",
+    height: "100%",
+    borderRadius: 40,
+    position: "absolute",
+  },
+  saleImageText1: {
+    fontSize: 40,
+    marginTop: "13%",
+    marginHorizontal: "5%",
+  },
+  saleImageText2: {
+    fontSize: 30,
+    marginLeft: "75%",
+  },
+  listStyles: {
+    backgroundColor: theme.colors.accent,
+    padding: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 5,
+    borderRadius: 20,
+  },
+  listStyles2: {
+    alignItems: "center",
+    marginVertical: 25,
+    marginHorizontal: 15,
+  },
+  categoryTextStyle: {
+    margin: 5,
+    fontSize: 20,
+  },
+  featuredTextStyle: {
+    marginTop: 5,
+    marginBottom: 3,
     fontSize: 12,
-    marginTop: 1,
-    marginLeft: 10,
-    marginRight: 10,
   },
+  chartTextStyle: {
+    margin: 5,
+    fontSize: 18,
+  },
+
+  dividerView: { marginTop: 20 },
+  listHeaderView: { marginStart: 10 },
 });
 export default styles;

@@ -63,7 +63,11 @@ const Home = () => {
             navigation.goBack();
           }}
         />
-        <Appbar.Content color="white" title="Home" />
+        <Appbar.Content
+          color="white"
+          title="Home"
+          titleStyle={{ alignSelf: "center" }}
+        />
         <Appbar.Action
           icon="cart"
           color="white"
@@ -71,77 +75,48 @@ const Home = () => {
             navigation.navigate("CartScreen");
           }}
         />
+        <Appbar.Action
+          icon="logout"
+          color="white"
+          onPress={() => {
+            navigation.reset({ index: 0, routes: [{ name: "SignIn" }] });
+          }}
+        />
       </Appbar.Header>
       <ScrollView>
-        <View
-          style={{ flexDirection: "row", alignItems: "center", marginTop: 20 }}
+        {/* <View
+          style={styles.avatarView}
         >
           <Avatar.Image
             size={40}
             source={require("../../../assets/emptyUser.jpg")}
           />
           <Text>Hello</Text>
-        </View>
+        </View> */}
 
-        <View
-          style={{
-            // flex: 0.35,
-            height: 180,
-          }}
-        >
+        <View style={styles.saleImageView}>
           <Image
-            style={{
-              //  flex: 1,
-              margin: 2,
-              width: "99%",
-              height: "100%",
-              borderRadius: 40,
-              position: "absolute",
-            }}
+            style={styles.saleImage}
             source={require("../../../assets/sixPocketTrouserBlack.jpeg")}
           />
-          <Text
-            style={{
-              fontSize: 40,
-              marginTop: "13%",
-              marginHorizontal: "5%",
-            }}
-          >
-            Flat
-          </Text>
-          <Text
-            style={{
-              fontSize: 30,
-              marginLeft: "75%",
-            }}
-          >
-            20% OFF
-          </Text>
+          <Text style={styles.saleImageText1}>Flat</Text>
+          <Text style={styles.saleImageText2}>20% OFF</Text>
         </View>
-        <View style={{ marginTop: 40 }}>
+        <View style={styles.dividerView}>
           <Text style={styles.textHeading}>Categories</Text>
           <FlatList
             data={categories}
             keyExtractor={(item) => item.id}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            ListHeaderComponentStyle={{ marginStart: 10 }}
+            ListHeaderComponentStyle={styles.listHeaderView}
             ListHeaderComponent={() => <View />}
             renderItem={(val) => {
               return (
                 <Pressable onPress={() => handleOnPressCategories(val.item)}>
-                  <Surface
-                    style={{
-                      backgroundColor: theme.colors.accent,
-                      padding: 20,
-                      alignItems: "center",
-                      justifyContent: "center",
-                      margin: 5,
-                      borderRadius: 20,
-                    }}
-                  >
+                  <Surface style={styles.listStyles}>
                     <Avatar.Image size={90} source={val.item.img} />
-                    <Text style={{ margin: 5, fontSize: 20 }}>
+                    <Text style={styles.categoryTextStyle}>
                       {val.item.name}
                     </Text>
                   </Surface>
@@ -150,34 +125,23 @@ const Home = () => {
             }}
           />
         </View>
-        <View style={{ marginTop: 20 }}>
+        <View style={styles.dividerView}>
           <Text style={styles.textHeading}>Featured</Text>
           <FlatList
             data={featured}
             keyExtractor={(item) => item.id}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            ListHeaderComponentStyle={{ marginStart: 10 }}
+            ListHeaderComponentStyle={styles.listHeaderView}
             ListHeaderComponent={() => <View />}
             renderItem={(val) => {
               return (
                 <Pressable
                   onPress={() => navigation.navigate("Checkout", val.item)}
                 >
-                  <Surface
-                    style={{
-                      backgroundColor: theme.colors.accent,
-                      padding: 20,
-                      alignItems: "center",
-                      justifyContent: "center",
-                      margin: 5,
-                      borderRadius: 20,
-                    }}
-                  >
+                  <Surface style={styles.listStyles}>
                     <Avatar.Image size={70} source={val.item.img} />
-                    <Text
-                      style={{ marginTop: 5, marginBottom: 3, fontSize: 12 }}
-                    >
+                    <Text style={styles.featuredTextStyle}>
                       {val.item.color}
                     </Text>
                     <Text style={{ fontSize: 20 }}>{val.item.name}</Text>
@@ -187,32 +151,26 @@ const Home = () => {
             }}
           />
         </View>
-        <View style={{ marginTop: 20 }}>
+        <View style={styles.dividerView}>
           <Text style={styles.textHeading}>Size Charts</Text>
           <FlatList
             data={sizeCharts}
             keyExtractor={(item) => item.id}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            ListHeaderComponentStyle={{ marginStart: 10 }}
+            ListHeaderComponentStyle={styles.listHeaderView}
             ListHeaderComponent={() => <View />}
             renderItem={(val) => {
               return (
                 <Pressable
-                  style={{
-                    alignItems: "center",
-                    marginVertical: 25,
-                    marginHorizontal: 15,
-                  }}
+                  style={styles.listStyles2}
                   onPress={() => {
                     setModalContent(val.item);
                     setSizeChartVisibility(true);
                   }}
                 >
                   <Avatar.Image size={60} source={val.item.img} />
-                  <Text style={{ margin: 5, fontSize: 18 }}>
-                    {val.item.name}
-                  </Text>
+                  <Text style={styles.chartTextStyle}>{val.item.name}</Text>
                 </Pressable>
               );
             }}

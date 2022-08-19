@@ -21,7 +21,11 @@ const CartScreen = () => {
             navigation.goBack();
           }}
         />
-        <Appbar.Content color="white" title="Cart" />
+        <Appbar.Content
+          color="white"
+          title="Cart"
+          titleStyle={{ alignSelf: "center" }}
+        />
       </Appbar.Header>
 
       {items.length ? (

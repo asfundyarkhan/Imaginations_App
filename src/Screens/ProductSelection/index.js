@@ -19,7 +19,11 @@ const ProductSelection = () => {
             navigation.goBack();
           }}
         />
-        <Appbar.Content color="white" title="" />
+        <Appbar.Content
+          color="white"
+          title=""
+          titleStyle={{ alignSelf: "center" }}
+        />
       </Appbar.Header>
 
       {params.length ? (

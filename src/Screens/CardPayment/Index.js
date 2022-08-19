@@ -53,7 +53,11 @@ const CardPayment = () => {
             navigation.goBack();
           }}
         />
-        <Appbar.Content color="white" title="Card Details" />
+        <Appbar.Content
+          color="white"
+          title="Card Details"
+          titleStyle={{ alignSelf: "center" }}
+        />
       </Appbar.Header>
       <Image
         style={styles.image}
