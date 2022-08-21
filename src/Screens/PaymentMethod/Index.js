@@ -19,7 +19,7 @@ const PaymentMethod = () => {
 
   const handleModalPressable = () => {
     setVisible(false);
-    navigation.reset({ index: 0, routes: [{ name: "SignIn" }] });
+    navigation.reset({ index: 0, routes: [{ name: "Home" }] });
   };
   return (
     <View style={styles.container}>
