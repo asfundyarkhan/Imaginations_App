@@ -6,14 +6,21 @@ import {
   Image,
   ActionSheetIOS,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Styles";
 import { useNavigation } from "@react-navigation/native";
 import { Appbar, IconButton } from "react-native-paper";
 import { theme } from "../../../App.styles";
+import ThankyouModal from "../../Modals/ThankyouModal";
 
 const PaymentMethod = () => {
   const navigation = useNavigation();
+  const [isVisible, setVisible] = useState(false);
+
+  const handleModalPressable = () => {
+    setVisible(false);
+    navigation.reset({ index: 0, routes: [{ name: "SignIn" }] });
+  };
   return (
     <View style={styles.container}>
       <Appbar.Header style={{ backgroundColor: theme.colors.accent }}>
@@ -33,7 +40,7 @@ const PaymentMethod = () => {
         <Text style={styles.text}>Select Payment Method</Text>
       </View>
       <Text style={styles.text}>Cash on delivery</Text>
-      <Pressable style={styles.Button}>
+      <Pressable style={styles.Button} onPress={() => setVisible(true)}>
         <IconButton size={70} icon="cash-marker" style={styles.image} />
       </Pressable>
       <Text style={styles.text}>Credit Card</Text>
@@ -45,6 +52,12 @@ const PaymentMethod = () => {
       >
         <IconButton size={70} icon="credit-card-outline" style={styles.image} />
       </Pressable>
+
+      <ThankyouModal
+        isVisible={isVisible}
+        onClose={() => setVisible(false)}
+        onActionPress={handleModalPressable}
+      />
     </View>
   );
 };
