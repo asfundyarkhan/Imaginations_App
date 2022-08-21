@@ -5,13 +5,22 @@ import { theme } from "../../../App.styles";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 import styles from "./styles";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../../store/features/cartSlice";
 
 const CartScreen = () => {
   const navigation = useNavigation();
   const { items, totalPrice } = useSelector((state) => state.Cart);
 
+  const dispatch = useDispatch();
+
   const [isVisible, setVisible] = useState(false);
   // const [total, setTotal] = useState(0);
+  const handleOnPress = (props) => {
+    setVisible(true);
+    dispatch(removeFromCart(props));
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <Appbar.Header style={{ backgroundColor: theme.colors.accent }}>
@@ -36,10 +45,9 @@ const CartScreen = () => {
             keyExtractor={(item) => item.id}
             renderItem={(val) => {
               return (
-                <Pressable onLongPress={() => setVisible(true)}>
+                <Pressable onPress={() => handleOnPress(val.item.id)}>
                   <Surface style={styles.surfaceStyle}>
                     <View style={styles.insideSurfaceview}>
-                      {console.log("sdsdsdsdsd", totalPrice)}
                       <View
                         style={{ flexDirection: "row", alignItems: "center" }}
                       >
@@ -85,7 +93,7 @@ const CartScreen = () => {
       <Snackbar
         visible={isVisible}
         onDismiss={() => setVisible(false)}
-        duration={1000}
+        duration={100}
       >
         item is being removed
       </Snackbar>

@@ -1,4 +1,3 @@
-
 import { View, Text, SafeAreaView, Image, Pressable } from "react-native";
 import React, { useState } from "react";
 import styles from "./Styles";
@@ -7,13 +6,10 @@ import { Formik } from "formik";
 import { SignupForm } from "./SignupForm";
 import { useNavigation } from "@react-navigation/native";
 
-
 const SignUp = () => {
   const navigation = useNavigation();
   const handleSignUp = () => {
-
     navigation.navigate("SignIn");
-
   };
   const [hidePassword, setHidePassword] = useState(true);
   return (
@@ -92,9 +88,7 @@ const SignUp = () => {
             </View>
             <Button
               mode="contained"
-              onPress={() => {
-                handleSubmit;
-              }}
+              onPress={handleSubmit}
               style={styles.button}
             >
               <Text style={{ color: "white" }}>Sign Up</Text>
@@ -106,9 +100,7 @@ const SignUp = () => {
         <Text>Already have an account ?</Text>
         <Pressable
           onPress={() => {
-
             navigation.navigate("SignIn");
-
           }}
         >
           <Text style={{ color: "#6c6c6c" }}> Sign In</Text>
