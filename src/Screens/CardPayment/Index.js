@@ -4,12 +4,19 @@ import styles from "./Styles";
 import { useNavigation } from "@react-navigation/native";
 import { Appbar, Button } from "react-native-paper";
 import { theme } from "../../../App.styles";
+import ThankyouModal from "../../Modals/ThankyouModal";
 
 const CardPayment = () => {
   const navigation = useNavigation();
   const [value, setValue] = useState("");
   const [correct, setCorrect] = useState(false);
 
+  const [isVisible, setVisible] = useState(false);
+
+  const handleModalPressable = () => {
+    setVisible(false);
+    navigation.reset({ index: 0, routes: [{ name: "SignIn" }] });
+  };
   const [card, setCard] = useState({
     value: "",
     validate: (value) => {
@@ -135,11 +142,16 @@ const CardPayment = () => {
           roundness: 20,
           colors: { primary: "#A0BBD6" },
         }}
-        onPress={() => console.log("Pressed")}
+        onPress={() => setVisible(true)}
         style={styles.button}
       >
         Pay for the order
       </Button>
+      <ThankyouModal
+        isVisible={isVisible}
+        onClose={() => setVisible(false)}
+        onActionPress={handleModalPressable}
+      />
     </View>
   );
 };
