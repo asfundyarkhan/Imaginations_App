@@ -14,9 +14,10 @@ export const cartSlice = createSlice({
       state.totalPrice += action.payload.price * action.payload.quantity;
     },
     removeFromCart(state, action) {
-      const productId = action.payload;
+      const productId = action.payload.id;
       const updatedCart = state.items.filter((item) => item.id !== productId);
       state.items = updatedCart;
+      state.totalPrice -= action.payload.price;
     },
   },
 });

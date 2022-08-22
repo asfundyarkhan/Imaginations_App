@@ -1,7 +1,7 @@
 const Kids = [
   {
     id: "1",
-    name: "Icecream Shirt(Dark)",
+    name: "Icecream Shirt(D)",
     img: require("../../assets/IMAGINATIONS(products)/KIDS/ICECREAM.jpeg"),
     price: 700,
     description: [
