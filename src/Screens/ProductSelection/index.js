@@ -21,7 +21,7 @@ const ProductSelection = () => {
         />
         <Appbar.Content
           color="white"
-          title=""
+          title="Product Selection"
           titleStyle={{ alignSelf: "center" }}
         />
       </Appbar.Header>

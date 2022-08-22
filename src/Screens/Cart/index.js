@@ -16,9 +16,9 @@ const CartScreen = () => {
 
   const [isVisible, setVisible] = useState(false);
   // const [total, setTotal] = useState(0);
-  const handleOnPress = (props) => {
+  const handleOnPress = (id, price) => {
     setVisible(true);
-    dispatch(removeFromCart(props));
+    dispatch(removeFromCart({ id, price }));
   };
 
   return (
@@ -45,7 +45,9 @@ const CartScreen = () => {
             keyExtractor={(item) => item.id}
             renderItem={(val) => {
               return (
-                <Pressable onPress={() => handleOnPress(val.item.id)}>
+                <Pressable
+                  onPress={() => handleOnPress(val.item.id, val.item.price)}
+                >
                   <Surface style={styles.surfaceStyle}>
                     <View style={styles.insideSurfaceview}>
                       <View
@@ -94,6 +96,7 @@ const CartScreen = () => {
         visible={isVisible}
         onDismiss={() => setVisible(false)}
         duration={100}
+        style={{ marginBottom: 20 }}
       >
         item is being removed
       </Snackbar>

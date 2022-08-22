@@ -65,8 +65,9 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   snackBarStyle: {
-    position: "absolute",
+    // position: "absolute",
     justifyContent: "flex-end",
+    marginBottom: 50,
   },
   btnText: { color: "#6c6c6c" },
 });
