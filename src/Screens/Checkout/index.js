@@ -7,6 +7,7 @@ import {
   Image,
   TextInput,
   KeyboardAvoidingView,
+  ScrollView,
 } from "react-native";
 import { Button, Snackbar } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
@@ -34,61 +35,63 @@ const ItemFinalizing = () => {
           resizeMode="cover"
           style={{ width: "100%", height: "40%" }}
         />
-        <View style={styles.body}>
-          <Text style={styles.titleStyle}>{name}</Text>
-          <Text style={styles.descriptionHeader}>Description</Text>
-          {description.map((val) => (
-            <Text style={styles.descriptionStyle}>{val}</Text>
-          ))}
-          <Text style={styles.titleSize}>Size</Text>
-          <View style={styles.sizesView}>
-            <Sizes text={"S"} />
-            <Sizes text={"M"} />
-            <Sizes text={"L"} />
-            <Sizes text={"XL"} />
-            <Text style={styles.inStockText}>In-Stock</Text>
-          </View>
-          <View style={styles.quantityView}>
-            <Text style={styles.quantityText}>Quantity :</Text>
-            <TextInput
-              placeholder="1"
-              value={quantity}
-              keyboardType="numeric"
-              onChangeText={(val) => setQuantity(val)}
-              style={styles.quantityInput}
-            />
-          </View>
-          <View style={styles.priceView}>
-            <Text style={styles.priceText}>Price :</Text>
-            <Text style={styles.priceValue}>{price}rs</Text>
-          </View>
-          <Button
-            mode="text"
-            onPress={() => {
-              setVisible(true);
-              dispatch(addToCart({ name, img, price, quantity, id }));
-            }}
-          >
-            <Text style={styles.btnText}>Add to Cart</Text>
-          </Button>
-          <Snackbar
-            visible={isVisible}
-            onDismiss={() => setVisible(false)}
-            duration={700}
-            style={styles.snackBarStyle}
-          >
-            Your item is Added to the cart
-          </Snackbar>
+        <ScrollView style={styles.body}>
+          <View style={styles.body}>
+            <Text style={styles.titleStyle}>{name}</Text>
+            <Text style={styles.descriptionHeader}>Description</Text>
+            {description.map((val) => (
+              <Text style={styles.descriptionStyle}>{val}</Text>
+            ))}
+            <Text style={styles.titleSize}>Size</Text>
+            <View style={styles.sizesView}>
+              <Sizes text={"S"} />
+              <Sizes text={"M"} />
+              <Sizes text={"L"} />
+              <Sizes text={"XL"} />
+              <Text style={styles.inStockText}>In-Stock</Text>
+            </View>
+            <View style={styles.quantityView}>
+              <Text style={styles.quantityText}>Quantity :</Text>
+              <TextInput
+                placeholder="1"
+                value={quantity}
+                keyboardType="numeric"
+                onChangeText={(val) => setQuantity(val)}
+                style={styles.quantityInput}
+              />
+            </View>
+            <View style={styles.priceView}>
+              <Text style={styles.priceText}>Price :</Text>
+              <Text style={styles.priceValue}>{price}rs</Text>
+            </View>
+            <Button
+              mode="text"
+              onPress={() => {
+                setVisible(true);
+                dispatch(addToCart({ name, img, price, quantity, id }));
+              }}
+            >
+              <Text style={styles.btnText}>Add to Cart</Text>
+            </Button>
+            <Snackbar
+              visible={isVisible}
+              onDismiss={() => setVisible(false)}
+              duration={700}
+              style={styles.snackBarStyle}
+            >
+              Your item is Added to the cart
+            </Snackbar>
 
-          <Button
-            mode="text"
-            onPress={() => {
-              navigation.navigate("CartScreen");
-            }}
-          >
-            <Text style={styles.btnText}>View Cart</Text>
-          </Button>
-        </View>
+            <Button
+              mode="text"
+              onPress={() => {
+                navigation.navigate("CartScreen");
+              }}
+            >
+              <Text style={styles.btnText}>View Cart</Text>
+            </Button>
+          </View>
+        </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
