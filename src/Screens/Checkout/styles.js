@@ -3,12 +3,14 @@ import { theme } from "../../../App.styles";
 
 const styles = StyleSheet.create({
   mainContainer: { flex: 1 },
-  body: { margin: 15 },
+  body: { margin: 15, zIndex: 1, elevation: 1 },
 
   titleStyle: {
     fontSize: 30,
     fontWeight: "800",
     marginBottom: 10,
+    // zIndex: 1,
+    // color: "green",
   },
   descriptionHeader: {
     fontSize: 25,
@@ -20,6 +22,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   titleSize: {
+    color: "black",
     fontSize: 25,
     fontWeight: "600",
     marginBottom: 10,
