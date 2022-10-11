@@ -3,7 +3,12 @@ import { theme } from "../../../App.styles";
 
 const styles = StyleSheet.create({
   mainContainer: { flex: 1 },
-  body: { margin: 15, zIndex: 1, elevation: 1 },
+  body: { 
+    marginVertical:25,
+     marginHorizontal:10, 
+     zIndex: 1,
+      elevation: 1, 
+     },
 
   titleStyle: {
     fontSize: 30,
